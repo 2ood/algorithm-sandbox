@@ -1,2 +1,2 @@
-# wani-mini
-Let's learn python with simple algorithms!
+# algorithm-sandbox
+Let's learn algorithms!
