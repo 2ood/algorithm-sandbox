@@ -12,21 +12,25 @@ for i in range(n):
 for element in expression:
     if element.isalpha():
         stack.append(number[ord(element) - 65])
-    elif element == '+':
-        temp = stack.pop()
-        temp += stack.pop()
-        stack.append(temp)
-    elif element == '-':
-        temp = stack.pop()
-        temp = stack.pop() - temp
-        stack.append(temp)
-    elif element == '*':
-        temp = stack.pop()
-        temp *= stack.pop()
-        stack.append(temp)
-    elif element == '/':
-        temp = stack.pop()
-        temp = stack.pop() / temp
-        stack.append(temp)
+    else :
+        match element :
+            case "+" :
+                temp = stack.pop()
+                temp += stack.pop()
+                stack.append(temp)
+            case "-" :
+                temp = stack.pop()
+                temp = stack.pop() - temp
+                stack.append(temp)
+            case "*" :
+                temp = stack.pop()
+                temp *= stack.pop()
+                stack.append(temp)
+            case "/" :
+                temp = stack.pop()
+                temp = stack.pop() / temp
+                stack.append(temp)
+            case _ :
+                raise Exception("Unknown operator")
 
 print(f'{stack.pop():0.2f}')
