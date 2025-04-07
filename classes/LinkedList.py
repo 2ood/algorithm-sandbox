@@ -1,10 +1,8 @@
-import sys
-
 class Node :
-    def __init__(self,content=None) :
+    def __init__(self) :
         self.next = None
         self.prev = None
-        self.content = content
+        self.content = None
     
     def __str__(self):
         return str(self.content)
@@ -16,13 +14,14 @@ class LinkedList :
         self.pointed = self.head
 
     def append(self,node):
-        if self.head.content == None : #empty
+        if self.head.content == None : #tail node pointed
             node.prev = self.head
             self.head = node
             self.pointed = node
             
         else :
             node.next = self.pointed.next
+            self.pointed.next = node
             self.pointed.next = node
             node.prev = self.pointed
             self.pointed = node
@@ -76,25 +75,3 @@ class LinkedList :
         
         return "".join(return_list)
 
-n = int(sys.stdin.readline().strip())
-result = []
-
-for i in range(n) :
-    keydown_string = list(sys.stdin.readline())
-    key = LinkedList()
-
-    for char in keydown_string :
-        match char:
-            case "<":
-                key.pointPrev()
-            case ">":
-                key.pointNext()
-            case "-":
-                key.deletePointed()
-            case _ :
-                key.append(Node(char))
-
-    result.append(key)
-
-for j in range(len(result)) :
-    print(str(result[j]))
